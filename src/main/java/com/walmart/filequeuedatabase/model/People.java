@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 
+import java.io.Serializable;
+
 //import javax.persistence.Column;
 //import javax.persistence.Entity;
 //import javax.persistence.Id;
@@ -14,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class People {
+public class People implements Serializable {
     @CsvBindByPosition(position = 0)
     //@Id
     //@Column(name = "person_ID")
