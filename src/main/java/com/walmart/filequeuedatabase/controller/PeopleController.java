@@ -27,32 +27,42 @@ public class PeopleController {
     @Autowired
     public CSVReader csvReader;
 
+    @Autowired
+    public ObjectMapper mapper;
+
     @PostMapping
     public void sendCSVtoqueue() throws FileNotFoundException, JMSException, JsonProcessingException {
         MQQueue destination = new MQQueue("INPUT");
-        //List<People> people = csvReader.readCsvFile();
-//        people.forEach(person ->
-//                jmsTemplate.send(destination, new MessageCreator() {
-//                    @Override
-//                    public Message createMessage(Session session) throws JMSException {
-//                        ObjectMessage objectMessage = session.createObjectMessage(person);
-//
-//                        return objectMessage;
-//                    }
-//                })
-//                );
-        People person = csvReader.readCsvFile();
-        ObjectMapper objectMapper = new ObjectMapper();
-        String personString = objectMapper.writeValueAsString(person);
-        System.out.println(personString);
-        jmsTemplate.send(destination, new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                TextMessage textMessage = session.createTextMessage();
-                textMessage.setText(personString);
-                return textMessage;
-            }
-        });
+        List<People> people = csvReader.readCsvFile();
+        people.forEach(person ->
+                jmsTemplate.send(destination, new MessageCreator() {
+                    @Override
+                    public Message createMessage(Session session) throws JMSException {
+                        TextMessage textMessage = session.createTextMessage();
+                        String personString = null;
+                        try {
+                            personString = mapper.writeValueAsString(person);
+                        } catch (JsonProcessingException e) {
+                            e.printStackTrace();
+                        }
+                        textMessage.setText(personString);
+
+                        return textMessage;
+                    }
+                })
+                );
+//        People person = csvReader.readCsvFile();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        String personString = objectMapper.writeValueAsString(person);
+//        System.out.println(personString);
+//        jmsTemplate.send(destination, new MessageCreator() {
+//            @Override
+//            public Message createMessage(Session session) throws JMSException {
+//                TextMessage textMessage = session.createTextMessage();
+//                textMessage.setText(personString);
+//                return textMessage;
+//            }
+//        });
     }
 
 }
