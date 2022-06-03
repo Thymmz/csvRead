@@ -20,7 +20,7 @@ public class People implements Serializable {
     @CsvBindByPosition(position = 0)
     //@Id
     //@Column(name = "person_ID")
-    private String person_ID;
+    private String personid;
 
     @CsvBindByPosition(position = 1)
     //@Column(name = "name")

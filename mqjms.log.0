@@ -223,3 +223,57 @@ null
 ACTION:
 Review the exception details for further information.
 --------------------------------------------------------------------
+June 3, 2022 at 8:49:45 AM CDT[http-nio-9041-exec-1] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+June 3, 2022 at 8:52:02 AM CDT[http-nio-9041-exec-1] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+June 3, 2022 at 8:56:31 AM CDT[http-nio-9041-exec-1] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+June 3, 2022 at 8:59:34 AM CDT[http-nio-9041-exec-1] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+June 3, 2022 at 10:15:06 AM CDT[http-nio-9041-exec-1] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
+June 3, 2022 at 10:15:50 AM CDT[http-nio-9041-exec-2] com.ibm.msg.client.commonservices.util.SerializationValidator
+No Allow list functionality enabled - either the properties were not set, or the security permissions prevent them being read
+
+EXPLANATION:
+null
+
+ACTION:
+null
+--------------------------------------------------------------------
