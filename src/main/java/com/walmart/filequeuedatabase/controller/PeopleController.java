@@ -32,13 +32,20 @@ public class PeopleController {
 
     @PostMapping
     public void sendCSVtoqueue() throws FileNotFoundException, JMSException, JsonProcessingException {
+        //Jms destination
         MQQueue destination = new MQQueue("INPUT");
+
+        //Get list of people from csv file
         List<People> people = csvReader.readCsvFile();
+
+        //Send a message for each row in the csv file
         people.forEach(person ->
                 jmsTemplate.send(destination, new MessageCreator() {
                     @Override
                     public Message createMessage(Session session) throws JMSException {
                         TextMessage textMessage = session.createTextMessage();
+
+                        //Map people object to csv file
                         String personString = null;
                         try {
                             personString = mapper.writeValueAsString(person);
@@ -46,7 +53,6 @@ public class PeopleController {
                             e.printStackTrace();
                         }
                         textMessage.setText(personString);
-
                         return textMessage;
                     }
                 })
