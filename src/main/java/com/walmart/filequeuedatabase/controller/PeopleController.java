@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.jms.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class PeopleController {
     public ObjectMapper mapper;
 
     @PostMapping
-    public void sendCSVtoqueue() throws FileNotFoundException, JMSException, JsonProcessingException {
+    public void sendCSVtoqueue() throws IOException, JMSException {
         //Jms destination
         MQQueue destination = new MQQueue("INPUT");
 
