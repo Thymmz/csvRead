@@ -12,13 +12,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CSVReaderTest {
-
-    @Value("${csv.file.location}")
-    private Resource csvLocation;
-
-    @Test
-    public void readCsvFile() throws IOException {
-        List<People> people = new CSVReader().readCsvFile();
-        people.forEach(person -> System.out.println(person));
-    }
+//
+//    @Value("${csv.file.location}")
+//    private Resource csvLocation;
+//
+//    @Test
+//    public void readCsvFile() throws IOException {
+//        List<People> people = new CSVReader().readCsvFile();
+//        people.forEach(person -> System.out.println(person));
+//    }
 }
