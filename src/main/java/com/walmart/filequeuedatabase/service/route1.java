@@ -11,13 +11,10 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class route extends RouteBuilder{
+public class route1 extends RouteBuilder{
 
     @Value("${csv.file.location}")
     private String csvLocation;
-
-    @Autowired
-    private CSVReader csvReader;
 
     @Override
     public void configure() throws Exception {
