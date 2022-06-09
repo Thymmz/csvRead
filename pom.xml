@@ -41,6 +41,13 @@
 			<artifactId>camel-bindy</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-http -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jackson</artifactId>

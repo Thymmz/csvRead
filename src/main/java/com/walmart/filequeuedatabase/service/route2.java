@@ -12,6 +12,7 @@ public class route2 extends RouteBuilder {
     public void configure() throws Exception {
         from("mq:queue:INPUT")
                 .unmarshal().json(JsonLibrary.Jackson, PeopleModel.class)
+                .marshal().json(JsonLibrary.Jackson)
                 .setHeader(Exchange.HTTP_METHOD, constant("POST"))
                 .to("http://localhost:9041/api/v1/people/")
                 .log("${body}");
