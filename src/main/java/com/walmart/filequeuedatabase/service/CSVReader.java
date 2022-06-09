@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.walmart.filequeuedatabase.model.People;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class CSVReader {
     @Value("${csv.file.location}")
     private Resource csvLocation;
 
+    @Bean
     public List<People> readCsvFile() throws IOException {
 
         //Read csv file and convert it to a list of objects
