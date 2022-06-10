@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class route1 extends RouteBuilder{
 
-    @Value("${csv.file.location}")
-    private String csvLocation;
+//    @Value("${csv.file.location}")
+//    private String csvLocation;
 
     @Override
     public void configure() throws Exception {
