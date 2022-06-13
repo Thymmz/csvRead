@@ -30,6 +30,8 @@ public class route2 extends RouteBuilder {
                         // Set the insert query in body and call camel jdbc
                         xchg.getIn().setBody(query);
                     }
-                }).to("jdbc:datasource");
+                })
+                //.to("jdbc:datasource")
+                .log("${body}");
     }
 }

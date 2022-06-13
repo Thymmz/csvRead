@@ -11,11 +11,6 @@ import org.apache.camel.test.junit5.CamelTestSupport;
 import org.apache.camel.test.spring.junit5.MockEndpoints;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @MockEndpoints()
 class route1Test extends CamelTestSupport {
 
@@ -24,25 +19,21 @@ class route1Test extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 DataFormat bind = new BindyCsvDataFormat(People.class);
-                from("file:src/main/resources/files?noop=true&fileName=people.csv")
+                from("{{route.start}}")
                         .unmarshal(bind)
                         .split(body())
                         .marshal().json(JsonLibrary.Jackson, true)
                         .convertBodyTo(String.class)
-                        .to("mock:mq:queue:INPUT");
+                        .to("{{route.end}}");
             }
         };
     }
 
     @Test
     public void testMocksAreValid() throws InterruptedException {
-        MockEndpoint mock = getMockEndpoint("mock:mq:queue:INPUT");
+        MockEndpoint mock = getMockEndpoint("mock:out");
         mock.expectedMessageCount(1);
+        template.sendBody("direct:in", "3130,\"Burks, Rosella \",Rosella,Burks,,BurksR@univ.edu,963.555.1253,963.777.4065,Professor");
         assertMockEndpointsSatisfied();
-
-        List line1 = (List) mock.getReceivedExchanges().get(0).getIn()
-                .getBody();
-        Map map1 = (Map) line1.get(0);
-
     }
 }
