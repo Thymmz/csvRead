@@ -25,7 +25,6 @@ public class route1 extends RouteBuilder{
                 .split(body())
                 .marshal().json(JsonLibrary.Jackson, true)
                 .convertBodyTo(String.class)
-                //.log("${body}")
                 .to("mq:queue:INPUT");
     }
 
