@@ -10,8 +10,10 @@ import org.apache.camel.spi.DataFormat;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.apache.camel.test.spring.junit5.MockEndpoints;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.annotation.DirtiesContext;
 
 @MockEndpoints()
+@DirtiesContext
 class route1Test extends CamelTestSupport {
 
     protected RouteBuilder createTestRouteBuilder() throws Exception{

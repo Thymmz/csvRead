@@ -20,12 +20,13 @@ public class route1 extends RouteBuilder{
     public void configure() throws Exception {
         DataFormat bind = new BindyCsvDataFormat(People.class);
 
-        from("{{route.start}}")
+        from("file:src/main/resources/files?noop=true")
+                .id("route1")
                 .unmarshal(bind)
                 .split(body())
                 .marshal().json(JsonLibrary.Jackson, true)
                 .convertBodyTo(String.class)
-                .to("{{route.end}}");
+                .to("mq:queue:INPUT");
     }
 
 }
