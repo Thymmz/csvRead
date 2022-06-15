@@ -1,0 +1,18 @@
+version: "3"
+services:
+  springboot-fqd:
+    image: springboot-fqd
+    build: .
+    ports:
+      - 9041:9041
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    volumes:
+      - /home/user/Desktop/db:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: hops_db
+      MYSQL_ROOT_PASSWORD: thymmz22
