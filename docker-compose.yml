@@ -1,27 +1,30 @@
 version: "3"
 services:
-  springboot-fqd:
-    image: springboot-fqd
-    restart: always
-    build: .
-    ports:
-      - 9041:9041
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/hops_db
-      MYSQL_HOST: mysqldb
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: thymmz22
-      MYSQL_PORT: 3306
-    depends_on:
-      - mysqldb
-
   mysqldb:
-    container_name: mysqldb
+    #container_name: mysqldb
     image: mysql
     ports:
       - 3307:3306
     environment:
       MYSQL_DATABASE: hops_db
       MYSQL_ROOT_PASSWORD: thymmz22
+      MYSQL_DDL: create-drop
+
+  springboot-fqd:
+    image: springboot-fqd
+    restart: always
+    build: .
+    ports:
+      - 9043:9041
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/hops_db
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: thymmz22
+      MYSQL_PORT: 3306
+    depends_on:
+      - mysqldb
+
+
 
 
