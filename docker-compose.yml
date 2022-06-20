@@ -24,21 +24,21 @@ services:
     ports:
       - 9043:9041
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/hops_db
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:hops_db
       MYSQL_HOST: mysqldb
       MYSQL_USER: root
       MYSQL_PASSWORD: thymmz22
       MYSQL_PORT: 3306
-      #CSV_FILE: file:src/main/resources/files?noop=true
+      CSV_FILE: file:var/lib/csvdata?noop=true
 #    configs:
 #      - ibm-config
     depends_on:
       - mysqldb
-    volumes:
-      - /src/main/resources/files: /var/lib/mysql/data
+#    volumes:
+#      - ./src/main/resources/files:/var/lib/mysql/data
 
 #  configs:
 #    ibm-config:
 #      external: true
-volumes:
-  - /src/main/resources/files: /var/lib/mysql/data
+#  volumes:
+#    - src/main/resources/files:/var/lib/mysql/data
