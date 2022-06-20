@@ -32,6 +32,5 @@ public class route2 extends RouteBuilder {
                     }
                 })
                 .to("jdbc:datasource");
-                //.log("${body}");
     }
 }
