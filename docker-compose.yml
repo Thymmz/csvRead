@@ -14,7 +14,6 @@ services:
 
   springboot-fqd:
     image: springboot-fqd
-    restart: always
     build: .
     ports:
       - 9043:9041
