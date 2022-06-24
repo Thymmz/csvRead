@@ -37,6 +37,6 @@ public class route2 extends RouteBuilder {
                         xchg.getIn().setBody(query);
                     }
                 })
-                .to("jdbc:datasource").onException(globalExceptionHandler);
+                .to("jdbc:datasource");
     }
 }
