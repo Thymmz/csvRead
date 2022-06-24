@@ -1,14 +1,20 @@
 package com.walmart.filequeuedatabase.service;
 
+import com.walmart.filequeuedatabase.exception.GlobalExceptionHandler;
 import com.walmart.filequeuedatabase.model.PeopleModel;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class route2 extends RouteBuilder {
+
+    @Autowired
+    private GlobalExceptionHandler globalExceptionHandler;
+
     @Override
     public void configure() throws Exception {
         from("mq:queue:INPUT")
@@ -31,6 +37,6 @@ public class route2 extends RouteBuilder {
                         xchg.getIn().setBody(query);
                     }
                 })
-                .to("jdbc:datasource");
+                .to("jdbc:datasource").onException(globalExceptionHandler);
     }
 }

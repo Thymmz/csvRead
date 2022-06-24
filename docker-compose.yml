@@ -16,7 +16,7 @@ services:
     image: springboot-fqd
     build: .
     ports:
-      - 9043:9041
+      - 9063:9061
     environment:
       MYSQL_HOST: mysqldb
       MYSQL_USER: root
